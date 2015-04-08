@@ -11,7 +11,7 @@ task :default do
     @logger.info "Run nightly integration"
     res = CircleCi::Project.build_branch 'higanworks', 'knife-zero', 'integration_testedge'
     @logger.info res.code
-    unless res.code == 201
+    unless res.success
       @logger.error "Maybe fail, it will notifies to some service."
     end
   rescue => e
